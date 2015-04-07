@@ -28,7 +28,12 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  */
 public class test {
     public static void main(String[] args) throws InterruptedException {
-        loginMega("Your username", "Your password");
+        if(args.length != 2) {
+            print("Required args: username password");
+            System.exit(-1);
+        }
+        
+        loginMega(args[0], args[1]);
     }
     
     public static void loginMega(String username, String passwd) throws InterruptedException {
@@ -82,7 +87,7 @@ public class test {
         
         }
         
-        System.out.println("Number of added elements = " + elements.size());
+        print("Number of added elements = " + elements.size());
          
         List<WebElement> contacts = 
                 driver.findElements(By.xpath("//div[@class='nw-fm-left-icon contacts ui-droppable']"));
